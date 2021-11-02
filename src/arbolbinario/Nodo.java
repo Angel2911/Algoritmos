@@ -16,5 +16,35 @@ public class Nodo {
     public String toString(){
         return nombre + "el numero es: "+dato;
     }
-            
+    public void preOrden(Nodo localNode) {
+
+        if(localNode != null) {
+            System.out.println(localNode.val);
+            preOrden(localNode.hijoIzquierdo);
+            preOrden(localNode.hijoDerecho); 
+        }   
+    }
+
+
+    public void postOrden(Nodo r){
+        if (r!=null){
+            postOrden(r.hijoIzquierdo);
+            postOrden(r.hijoDerecho);
+            System.out.println(r.dato);
+        }
+    }       
+    public Nodo buscarNodo(int d){
+        Nodo aux=raiz;
+        while (aux.dato!=d){
+            if (d<aux.dato){    
+                aux=aux.hijoIzquierdo;
+            }else{
+                aux=aux.hijoDerecho;
+            }
+            if (aux==null){
+                return null;
+            }
+        }
+        return aux;
+    }           
 }
